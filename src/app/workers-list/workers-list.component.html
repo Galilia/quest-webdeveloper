@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="workersList">
+
+    <div class="title">
+      <span>Workers</span>
+    </div>
+
+    <div class="list">
+      <div class="worker"
+           *ngFor="let worker of workers | async"
+           [ngClass]="{'active': worker.id === workerId}"
+           (click)="getFlightList(worker.id)"
+      >
+        <div>{{worker.name}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <app-flights-list *ngIf="workerId" [workerId]="workerId"></app-flights-list>
+
+</div>

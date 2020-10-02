@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="flightsList">
+    <div class="flight">
+      <table>
+        <tr>
+          <th>Flight Number</th>
+          <th>Origin</th>
+          <th>Origin Date</th>
+          <th>Destination</th>
+          <th>Destination Date</th>
+        </tr>
+        <tr
+          *ngFor="let flight of flights"
+          [ngClass]="{'active': flight.num === currentFlight.num}"
+          (click)="showFlight(flight)">
+          <td>{{flight.num}}</td>
+          <td>{{flight.from}}</td>
+          <td>{{flight.from_date}}</td>
+          <td>{{flight.to}}</td>
+          <td>{{flight.to_date}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <app-flight-view *ngIf="currentFlight" [flight]="currentFlight"></app-flight-view>
+</div>
+
